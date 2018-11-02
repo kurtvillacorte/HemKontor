@@ -107,6 +107,12 @@ class ProductsController extends Controller
     public function show($id)
     {
         //
+        $individualproduct = DB::table('product')
+        ->join('productimage', 'product.productCode', '=', 'productimage.productCode')
+        ->where('product.productCode', '=', $id)
+        ->get();
+        // return $individualproduct;
+        return view('website.product-details')->with('products', $individualproduct);
     }
 
     /**

@@ -3,7 +3,8 @@
 @section('content')
 
 <body>
-
+    @if(count($products) > 0)
+    @foreach($products as $product)
         <!-- Product Details Area Start -->
         <div class="single-product-area section-padding-100 clearfix">
             <div class="container-fluid">
@@ -15,7 +16,7 @@
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#">Furniture</a></li>
                                 <li class="breadcrumb-item"><a href="#">Chairs</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">white modern chair</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
                             </ol>
                         </nav>
                     </div>
@@ -26,7 +27,7 @@
                         <div class="single_product_thumb">
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url({{asset('img/product-img/pro-big-1.jpg')}});">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image:  url('../storage/cover_images/{{$product->productImage}}');">
                                     </li>
                                     <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url({{asset('img/product-img/pro-big-2.jpg')}});">
                                     </li>
@@ -37,8 +38,8 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="{{asset('img/product-img/pro-big-1.jpg')}}">
-                                            <img class="d-block w-100" src="{{asset('img/product-img/pro-big-1.jpg')}}" alt="First slide">
+                                        <a class="gallery_img" href="../storage/cover_images/{{$product->productImage}}">
+                                            <img class="d-block w-100" src="../storage/cover_images/{{$product->productImage}}" alt="First slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
@@ -65,9 +66,9 @@
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
-                                <p class="product-price">$180</p>
+                                <p class="product-price">PHP{{$product->productPrice}}</p>
                                 <a href="product-details.blade.php">
-                                    <h6>White Modern Chair</h6>
+                                    <h6>{{$product->name}}</h6>
                                 </a>
                                 <!-- Ratings & Review -->
                                 <div class="ratings-review mb-15 d-flex align-items-center justify-content-between">
@@ -87,7 +88,7 @@
                             </div>
 
                             <div class="short_overview my-5">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quae eveniet culpa officia quidem mollitia impedit iste asperiores nisi reprehenderit consequatur, autem, nostrum pariatur enim?</p>
+                                <p>{{$product->description}}</p>
                             </div>
 
                             <!-- Add to Cart Form -->
@@ -111,6 +112,8 @@
         <!-- Product Details Area End -->
     </div>
     <!-- ##### Main Content Wrapper End ##### -->
+    @endforeach
+@endif
 
     
 </body>
