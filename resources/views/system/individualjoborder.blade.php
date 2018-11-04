@@ -12,31 +12,33 @@
             <div class="card-body">
     
                 
-                @if(count($individualorders) > 0)
+                @if(count($individualjoborders) > 0)
                                         
-                    @foreach($individualorders as $individualorder)
+                    @foreach($individualjoborders as $individualjoborder)
 
         
                 {!! Form::open(['action' => 'ProductionJobOrdersController@store', 'method' => 'POST']) !!}
                     
                     <!-- JOB ORDER NUMBER -->
                     {{Form::label('joNo', 'Job Order Number')}}
-                    {{Form::number('joNo', '', ['class' => 'form-control', 'placeholder' => 'JO-00000'])}}
+                    {{Form::number('joNo', $individualjoborder->joNo, ['class' => 'form-control', 'readonly'])}}
 
                     <!-- JOB ORDER DATE -->
                     {{Form::label('joDate', 'Date Created')}}
                     {{Form::date('joDate', \Carbon\Carbon::now(), ['class' => 'form-control', 'readonly'])}}
 
                     <!-- JOB ORDER CLIENT ID -->
-                    {{ Form::hidden('clientID', $individualorder->clientID) }}
+                    {{ Form::hidden('clientID', $individualjoborder->clientID) }}
 
                     <!-- JOB ORDER CLIENT NAME -->
                     {{Form::label('clientname', 'Client Name')}}
-                    {{Form::text('clientname', $individualorder->firstName.' '.$individualorder->lastName, ['class' => 'form-control', 'placeholder' => 'Client Name', 'disabled'])}}
+                    {{Form::text('clientname', $individualjoborder->firstName.$individualjoborder->lastName, ['class' => 'form-control', 'placeholder' => 'Client Name', 'disabled'])}}
 
                     <!-- JOB ORDER COID -->
                     {{Form::label('clientOrderID', 'Client Order ID')}}
-                    {{Form::text('clientOrderID', $individualorder->clientOrderID, ['class' => 'form-control', 'readonly'])}}
+                    {{Form::text('clientOrderID', $individualjoborder->clientOrderID, ['class' => 'form-control', 'readonly'])}}
+
+                    <!-- ORDER DETAILS PREVIOUSLY HERE -->
 
                     <!-- NOTES -->
                     {{Form::label('notes', 'Notes')}}
@@ -47,22 +49,33 @@
                     {{Form::date('joDeliveryDate', \Carbon\Carbon::now(), ['class' => 'form-control'])}}
                     
                     <br>
+
+                    <!-- PRODUCTION DETAILS PREVIOUSLY HERE -->
                     
                     <!-- JOB ORDER APPROVED -->
                     {{Form::label('joApproved', 'Approved')}}
-                    
-                    {{Form::checkbox('joApproved', 0, false, array('disabled'), ['class' => 'form-control'])}}
-                                       
+                    {{Form::hidden('joApproved', 0)}}
+
+                    @if($individualjoborder->joApproved == 1) 
+                        
+                        {{Form::checkbox('joApproved', 1, true, array('disabled'), ['class' => 'form-control'])}}
+                         
+                        @else
+                            {{Form::checkbox('joApproved', 0, false, array('disabled'), ['class' => 'form-control'])}}
+                        
+                    @endif       
                     <br>
-                    {{Form::submit('Submit', ['class'=>'btn btn-success'])}}
 
                 {!! Form::close() !!} 
 
-                        @break
+                    @break
+
                     @endforeach
 
                 @endif
                 
+                
+
                 <!-- JOB ORDER DETAILS ID -->
                 <br>
                 <h4><b>Order Details</b></h4>
@@ -79,17 +92,17 @@
                     </thead>
                     <tbody>
                         
-                        @if(count($individualorders) > 0)
+                        @if(count($individualjoborders) > 0)
                                         
-                            @foreach($individualorders as $individualorder)
+                            @foreach($individualjoborders as $individualjoborder)
 
                         <tr>
                             <td class="cart_product_img">
                                 <!-- Product Image -->
-                                <img src="../storage/cover_images/{{$individualorder->productImage}}" alt="">
+                                <img src="../storage/cover_images/{{$individualjoborder->productImage}}" alt="">
                             </td>
-                            <td>{{$individualorder->productCode}}</td>
-                            <td>{{$individualorder->quantity}}</td>
+                            <td>{{$individualjoborder->productCode}}</td>
+                            <td>{{$individualjoborder->quantity}}</td>
                         </tr>
 
                             @endforeach
@@ -117,17 +130,17 @@
                         </thead>
                         <tbody>
 
-                            @if(count($individualorders) > 0)
+                            @if(count($individualjoborders) > 0)
                                         
-                                @foreach($individualorders as $individualorder)
+                                @foreach($individualjoborders as $individualjoborder)
 
                             <tr>
-                                <td>{{$individualorder->name}}</td>
-                                <td>{{$individualorder->productQuantity}}</td>
-                                <td>{{$individualorder->basicMatID}}</td>
-                                <td>{{$individualorder->quantity}}</td>
-                                <td>{{$individualorder->rawMatName}}</td>
-                                <td>{{$individualorder->quantity * $individualorder->productQuantity}}</td>
+                                <td>{{$individualjoborder->name}}</td>
+                                <td>{{$individualjoborder->productQuantity}}</td>
+                                <td>{{$individualjoborder->basicMatID}}</td>
+                                <td>{{$individualjoborder->quantity}}</td>
+                                <td>{{$individualjoborder->rawMatName}}</td>
+                                <td>{{$individualjoborder->quantity * $individualjoborder->productQuantity}}</td>
                             </tr>
                             
                                 @endforeach
@@ -136,6 +149,7 @@
             
                         </tbody>
                     </table>
+                
 <!-- LARAVEL CODE END -->
     
   </tbody>

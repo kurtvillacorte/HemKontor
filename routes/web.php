@@ -31,6 +31,8 @@ Route::resource('clientorderdetails', 'ClientOrderDetailsController');
 
 //SYSTEM ROUTES
 
+Route::resource('productionjoborders', 'ProductionJobOrdersController');
+
 Route::resource('productionindex', 'ProductionIndexController');
 
 Route::resource('productionorders', 'ProductionOrdersController');

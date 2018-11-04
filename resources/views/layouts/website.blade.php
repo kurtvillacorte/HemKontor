@@ -11,9 +11,6 @@
     <!-- Title  -->
     <title>Amado - Furniture Ecommerce Template | Cart</title>
 
-    <!-- Favicon  -->
-    <link rel="icon" href="{{asset('img/core-img/favicon.ico')}}">
-
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="{{asset('css/core-style.css')}}">
     <link rel="stylesheet" href="{{asset('style.css')}}">

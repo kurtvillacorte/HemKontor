@@ -11,10 +11,10 @@
 <table id="bootstrap-data-table" class="table table-striped table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Office</th>
-      <th>Salary</th>
+      <th>Client Order ID</th>
+      <th>Status</th>
+      <th>Date Ordered</th>
+      <th>Date Required</th>
     </tr>
   </thead>
   <tbody>

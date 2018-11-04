@@ -10,9 +10,6 @@
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-icon.png">
-    <link rel="shortcut icon" href="favicon.ico">
-
     <link rel="stylesheet" href="{{asset('assets/css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/font-awesome.min.css')}}">
@@ -203,17 +200,9 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+            
         </div>
-
+        @include('inc.messages')
         @yield('content')
         
     </div><!-- /#right-panel -->

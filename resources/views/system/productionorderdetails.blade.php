@@ -20,17 +20,22 @@
                 <th></th>
                 <th>Product Ordered</th>
                 <th>Quantity</th>
+                <th>Price Each</th>
+                <th>Total Amount</th>
                 </tr>
             </thead>
             <tbody>
-
+                           
                 <tr>
-                        <td class="cart_product_img">
-                                <a href="#"><img src="{{asset('img/bg-img/cart2.jpg')}}" alt="Product"></a>
-                            </td>
+                    <!-- LARAVEL CODE START -->
+                    <td class="cart_product_img">
+                        <!-- Product Image -->
+                        <img src="../storage/cover_images/{{$individualorder->productImage}}" alt="">
+                    </td>
                     <td>{{$individualorder->name}}</td>
-                    <td>{{$individualorder->productCode}}</td>
-                    <td>{{$individualorder->quantity}}</td>
+                    <td>{{$individualorder->productQuantity}}</td>
+                    <td>{{$individualorder->productPrice}} PHP</td>
+                    <td>{{$individualorder->productPrice * $individualorder->productQuantity}} PHP</td>
                 </tr>
         
         @endforeach

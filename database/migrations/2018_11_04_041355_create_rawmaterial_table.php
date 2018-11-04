@@ -15,7 +15,7 @@ class CreateRawmaterialTable extends Migration {
 		Schema::create('rawmaterial', function(Blueprint $table)
 		{
 			$table->string('rawMatCode', 11)->primary();
-			$table->string('description', 45)->nullable();
+			$table->string('rawMatName', 45)->nullable();
 		});
 	}
 

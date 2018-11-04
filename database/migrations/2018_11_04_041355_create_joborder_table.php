@@ -17,7 +17,7 @@ class CreateJoborderTable extends Migration {
 			$table->integer('joNo')->primary();
 			$table->date('joDate')->nullable();
 			$table->string('clientID', 11)->nullable()->index('clientID_idx');
-			$table->string('clientOrderID', 11)->nullable()->index('clientOrderID_idx');
+			$table->string('joCoID', 11)->nullable()->index('clientOrderID_idx');
 			$table->integer('joApproved')->nullable();
 			$table->string('notes', 45)->nullable();
 			$table->date('joDeliveryDate')->nullable();

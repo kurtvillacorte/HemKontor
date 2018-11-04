@@ -48,12 +48,13 @@ class ProductionOrderDetailsController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
         
-        Session::put('clientorderdetailsid', $id);
-
+        Session::put('clientorderID', $id);
+        
         $individualorders = DB::table('clientorderdetails')
             ->join('product', 'clientorderdetails.productCode', '=', 'product.productCode')
+            ->join('productimage', 'product.productCode', '=', 'productimage.productCode')
             ->where('clientOrderID', $id)
             ->get();
         

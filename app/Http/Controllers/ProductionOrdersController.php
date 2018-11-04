@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ClientOrder;
+use Illuminate\Support\Facades\DB;
 
 class ProductionOrdersController extends Controller
 {
@@ -15,7 +16,12 @@ class ProductionOrdersController extends Controller
     public function index()
     {
         //
-        $clientorders = ClientOrder::all();
+
+        $clientorders = DB::table('clientorders')
+            ->leftJoin('joborder', 'clientorders.clientOrderID', '=', 'joborder.joCoID')
+            ->whereNull('joborder.joNo')
+            ->get();
+        
         return view('system.productionorders')->with('clientorders', $clientorders);
     }
 

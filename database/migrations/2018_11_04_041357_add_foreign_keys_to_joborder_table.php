@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToClientordersTable extends Migration {
+class AddForeignKeysToJoborderTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,9 +12,10 @@ class AddForeignKeysToClientordersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('clientorders', function(Blueprint $table)
+		Schema::table('joborder', function(Blueprint $table)
 		{
 			$table->foreign('clientID', 'clientID')->references('clientID')->on('client')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+			$table->foreign('joCoID', 'clientOrderID')->references('clientOrderID')->on('clientorders')->onUpdate('NO ACTION')->onDelete('NO ACTION');
 		});
 	}
 
@@ -26,9 +27,10 @@ class AddForeignKeysToClientordersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('clientorders', function(Blueprint $table)
+		Schema::table('joborder', function(Blueprint $table)
 		{
 			$table->dropForeign('clientID');
+			$table->dropForeign('clientOrderID');
 		});
 	}
 

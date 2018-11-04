@@ -48,10 +48,13 @@ class ClientOrderDetailsController extends Controller
     public function show($id)
     {
         //
+
         $individualorders = DB::table('clientorderdetails')
             ->join('product', 'clientorderdetails.productCode', '=', 'product.productCode')
+            ->join('productimage', 'product.productCode', '=', 'productimage.productCode')
             ->where('clientOrderID', $id)
             ->get();
+            
         return view('website.individualorder')->with('individualorders', $individualorders);
         //return ClientOrderDetail::where('clientOrderID', $id)->get();
         //return view('website.individualorder');

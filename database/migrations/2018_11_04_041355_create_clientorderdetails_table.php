@@ -17,7 +17,7 @@ class CreateClientorderdetailsTable extends Migration {
 			$table->string('clientOrderDetailID', 11)->primary();
 			$table->string('clientOrderID', 11)->nullable()->index('fk_clientOrderDetails_clientOrders1_idx');
 			$table->string('productCode', 11)->index('fk_clientOrderDetails_product1_idx');
-			$table->integer('quantity');
+			$table->integer('productQuantity');
 		});
 	}
 

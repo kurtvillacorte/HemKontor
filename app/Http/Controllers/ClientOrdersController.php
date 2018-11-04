@@ -16,7 +16,8 @@ class ClientOrdersController extends Controller
     public function index()
     {
         //
-        $clientorders = ClientOrder::all();
+        $clientorders = DB::table('clientorders')->get();
+        
         return view('website.orderslist')->with('clientorders', $clientorders);
 
     }

@@ -22,6 +22,8 @@
                                         <th></th>
                                         <th>Product Ordered</th>
                                         <th>Quantity</th>
+                                        <th>Price Each</th>
+                                        <th>Total Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,7 +34,7 @@
                                             <tr>
                                                 
                                                 <td class="cart_product_img">
-                                                    <a href="#"><img src="{{asset('img/bg-img/cart2.jpg')}}" alt="Product"></a>
+                                                    <img src="../storage/cover_images/{{$individualorder->productImage}}" alt="">
                                                 </td>
                                                 <td class="price">
                                                     <span>{{$individualorder->name}}</span>
@@ -40,6 +42,8 @@
                                                 <td class="cart_product_desc">
                                                     <span>{{$individualorder->quantity}}</span>
                                                 </td>
+                                                <td>{{$individualorder->productPrice}} PHP</td>
+                                                <td>{{$individualorder->productPrice * $individualorder->quantity}} PHP</td>
                                             </tr>
                                 @endforeach
 

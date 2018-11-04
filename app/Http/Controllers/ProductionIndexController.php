@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\JobOrder;
+use Illuminate\Support\Facades\DB;
 
 class ProductionIndexController extends Controller
 {
@@ -14,7 +16,12 @@ class ProductionIndexController extends Controller
     public function index()
     {
         //
-        return view('system.productionindex');
+        $joborders = DB::table('joborder')
+        ->join('clientorders', 'joborder.joCoID', '=', 'clientorders.clientOrderID')
+        ->join('client', 'joborder.clientID', '=', 'client.clientID')
+        ->get();
+
+        return view('system.productionindex')->with('joborders', $joborders);
     }
 
     /**
@@ -47,6 +54,7 @@ class ProductionIndexController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
