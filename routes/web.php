@@ -29,6 +29,7 @@ Route::resource('clientorders', 'ClientOrdersController');
 
 Route::resource('clientorderdetails', 'ClientOrderDetailsController');
 
+Route::get('/payments', 'PayMayaTestController@redirectToPayMaya');
 //SYSTEM ROUTES
 
 Route::resource('productionjoborders', 'ProductionJobOrdersController');

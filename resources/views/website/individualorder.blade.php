@@ -1,6 +1,6 @@
 @extends('layouts.website')
 
-@section('content')
+    @section('content')
 
 
 
@@ -9,6 +9,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-8">
 
+                        
                         @foreach ($individualorders as $individualorder)
 
                         <div class="cart-title mt-50">
@@ -27,10 +28,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
+                            @break
+                        @endforeach
                                 
                                 <!-- LARAVEL CODE START -->
                                     
-                                
+                                @foreach ($individualorders as $individualorder)
+
                                             <tr>
                                                 
                                                 <td class="cart_product_img">
@@ -40,10 +45,10 @@
                                                     <span>{{$individualorder->name}}</span>
                                                 </td>
                                                 <td class="cart_product_desc">
-                                                    <span>{{$individualorder->quantity}}</span>
+                                                    <span>{{$individualorder->productQuantity}}</span>
                                                 </td>
                                                 <td>{{$individualorder->productPrice}} PHP</td>
-                                                <td>{{$individualorder->productPrice * $individualorder->quantity}} PHP</td>
+                                                <td>{{$individualorder->productPrice * $individualorder->productQuantity}} PHP</td>
                                             </tr>
                                 @endforeach
 

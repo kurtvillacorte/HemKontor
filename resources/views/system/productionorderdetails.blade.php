@@ -25,7 +25,13 @@
                 </tr>
             </thead>
             <tbody>
-                           
+
+            @break
+            
+        @endforeach
+        
+        @foreach($individualorders as $individualorder)
+
                 <tr>
                     <!-- LARAVEL CODE START -->
                     <td class="cart_product_img">

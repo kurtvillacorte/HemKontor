@@ -94,7 +94,7 @@
                             </div>
 
                             <div class="cart-btn mt-100">
-                                <a href="#" class="btn amado-btn w-100">Checkout</a>
+                                <a href="payments/" class="btn amado-btn w-100">Checkout</a>
                             </div>
                         </div>
                     </div>

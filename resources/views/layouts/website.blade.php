@@ -61,14 +61,13 @@
                     </div>
                     <!-- Logo -->
                     <div class="logo">
-                        <a href="index.blade.php"><img src="{{asset('img/core-img/logo.png')}}" alt=""></a>
+                        <a href="index.blade.php"><img src="{{asset('img/core-img/hklogo.png')}}" alt=""></a>
                     </div>
                     <!-- Amado Nav -->
                     <nav class="amado-nav">
                         <ul>
                             <li><a href="{{url('/index.blade.php')}}">Home</a></li>
                             <li><a href="{{url('/products')}}">Shop</a></li>
-                            <li><a href="{{url('/product-details.blade.php')}}">Product</a></li>
                             <li class="active"><a href="{{url('/cart.blade.php')}}">Cart</a></li>
                             <li><a href="{{url('/checkout.blade.php')}}">Checkout</a></li>
                             <li><a href="{{url('/clientorders')}}">My Orders</a></li>
