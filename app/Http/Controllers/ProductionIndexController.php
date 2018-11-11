@@ -18,7 +18,7 @@ class ProductionIndexController extends Controller
         //
         $joborders = DB::table('joborder')
         ->join('clientorders', 'joborder.joCoID', '=', 'clientorders.clientOrderID')
-        ->join('client', 'joborder.clientID', '=', 'client.clientID')
+        ->join('client', 'clientorders.clientID', '=', 'client.clientID')
         ->get();
 
         return view('system.productionindex')->with('joborders', $joborders);

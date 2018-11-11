@@ -64,7 +64,6 @@ class ProductionJobOrdersController extends Controller
         $joborder = new JobOrder;
         $joborder->joNo = $request->input('joNo');
         $joborder->joDate = $request->input('joDate');
-        $joborder->clientID = $request->input('clientID');
         $joborder->joCoID = $request->input('clientOrderID');
         $joborder->joApproved = $request->input('joApproved');
         $joborder->notes = $request->input('notes');

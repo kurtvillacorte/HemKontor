@@ -33,8 +33,8 @@ class PayMayaTestController extends Controller
 
     public function redirectToPayMaya()
     {
-        $sample_item_name = 'Product 1';
-        $sample_total_price = 1000.00;
+        $sample_item_name = 'Sofi Stool';
+        $sample_total_price = 5500.00;
 
         $sample_user_phone = '1234567';
         $sample_user_email = 'test@gmail.com';
@@ -46,6 +46,35 @@ class PayMayaTestController extends Controller
             env('PAYMAYA_SECRET_KEY'),
             (\App::environment('production') ? 'PRODUCTION' : 'SANDBOX')
         );
+
+        // Customization
+
+        $shopCustomization = new Customization();
+        $shopCustomization->get();
+
+        $shopCustomization->logoUrl = asset('img/core-img/hklogo.png');
+        $shopCustomization->iconUrl = asset('favicon.ico');
+        $shopCustomization->appleTouchIconUrl = asset('favicon.ico');
+        $shopCustomization->customTitle = 'Hem Kontor Payment Gateway';
+        $shopCustomization->colorScheme = '#252228';
+
+        $shopCustomization->set();
+
+        // Webhooks
+        $webhooks = Webhook::retrieve();
+        foreach ($webhooks as $webhook) {
+            $webhook->delete();
+        }
+
+        $successWebhook = new Webhook();
+        $successWebhook->name = Webhook::CHECKOUT_SUCCESS;
+        $successWebhook->callbackUrl = url('callback/success');
+        $successWebhook->register();
+
+        $failureWebhook = new Webhook();
+        $failureWebhook->name = Webhook::CHECKOUT_FAILURE;
+        $failureWebhook->callbackUrl = url('callback/error');
+        $failureWebhook->register();
 
         // Item
         $itemAmountDetails = new ItemAmountDetails();
@@ -72,7 +101,7 @@ class PayMayaTestController extends Controller
         $itemCheckout->totalAmount = $itemAmount;
         $itemCheckout->requestReferenceNumber = $sample_reference_number;
         $itemCheckout->redirectUrl = array(
-            "success" => url('returl-url/success'),
+            "success" => url('/website/success'),
             "failure" => url('returl-url/failure'),
             "cancel" => url('returl-url/cancel'),
         );
@@ -87,10 +116,10 @@ class PayMayaTestController extends Controller
         $shopCustomization = new Customization();
         $shopCustomization->get();
 
-        $shopCustomization->logoUrl = asset('logo.jpg');
+        $shopCustomization->logoUrl = asset('hklogo.jpg');
         $shopCustomization->iconUrl = asset('favicon.ico');
         $shopCustomization->appleTouchIconUrl = asset('favicon.ico');
-        $shopCustomization->customTitle = 'PayMaya Payment Gateway';
+        $shopCustomization->customTitle = 'Hem Kontor Payment Gateway';
         $shopCustomization->colorScheme = '#f3dc2a';
 
         $shopCustomization->set();

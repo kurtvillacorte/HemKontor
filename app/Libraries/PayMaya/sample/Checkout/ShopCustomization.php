@@ -2,8 +2,8 @@
 
 require __DIR__ . "/../autoload.php";
 
-use PayMaya\PayMayaSDK;
-use PayMaya\API\Customization;
+use App\Libraries\PayMaya\lib\PayMaya\PayMayaSDK;
+use App\Libraries\PayMaya\lib\PayMaya\API\Customization;
 
 PayMayaSDK::getInstance()->initCheckout("pk-iaioBC2pbY6d3BVRSebsJxghSHeJDW4n6navI7tYdrN", 
 										"sk-uh4ZFfx9i0rZpKN6CxJ826nVgJ4saGGVAH9Hk7WrY6Q", 

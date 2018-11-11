@@ -27,9 +27,6 @@
                     {{Form::label('joDate', 'Date Created')}}
                     {{Form::date('joDate', \Carbon\Carbon::now(), ['class' => 'form-control', 'readonly'])}}
 
-                    <!-- JOB ORDER CLIENT ID -->
-                    {{ Form::hidden('clientID', $individualorder->clientID) }}
-
                     <!-- JOB ORDER CLIENT NAME -->
                     {{Form::label('clientname', 'Client Name')}}
                     {{Form::text('clientname', $individualorder->firstName.' '.$individualorder->lastName, ['class' => 'form-control', 'placeholder' => 'Client Name', 'disabled'])}}
